@@ -8,15 +8,57 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="302dp"
         android:background="#FFFFFF"
+        android:scaleType="centerInside"
         app:srcCompat="@drawable/outline_border" />
 
     <Button
         android:id="@+id/button10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#ECECEC"
         android:onClick="onOpenAlbum"
-        android:text="사진 선택" />
+        android:text="사진 선택"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ECECEC"
+            android:onClick="onChangePaint"
+            android:text="파랑"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="#ECECEC"
+            android:onClick="onChangePaint"
+            android:text="가늘게"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#ECECEC"
+            android:onClick="onChangePaint"
+            android:text="원래대로"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 </LinearLayout>
