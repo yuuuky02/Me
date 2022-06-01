@@ -1,4 +1,4 @@
-package com.example.me;
+package com.example.meee;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-public class MainActivity3 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity {
 
     private static final int REQ_CODE_SELECT_IMAGE = 100;
 
@@ -46,7 +46,7 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_main2);
         btn2 = findViewById(R.id.button2);
         btn3 = findViewById(R.id.button3);
         btn4 = findViewById(R.id.button4);
@@ -68,10 +68,10 @@ public class MainActivity3 extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                albumdialog = View.inflate(MainActivity3.this, R.layout.albumdialog, null);
+                albumdialog = View.inflate(MainActivity2.this, R.layout.albumdialog, null);
                 iv3 = albumdialog.findViewById(R.id.imageView3);
                 btn10 = albumdialog.findViewById(R.id.button10);
-                new AlertDialog.Builder(MainActivity3.this)
+                new AlertDialog.Builder(MainActivity2.this)
                         .setTitle("사진 선택")
                         .setIcon(R.drawable.photo)
                         .setView(albumdialog)
@@ -97,10 +97,10 @@ public class MainActivity3 extends AppCompatActivity {
         iv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showdialog = View.inflate(MainActivity3.this, R.layout.showdialog, null);
+                showdialog = View.inflate(MainActivity2.this, R.layout.showdialog, null);
                 iv4 = showdialog.findViewById(R.id.imageView4);
                 iv4.setImageBitmap(bitmap);
-                new AlertDialog.Builder(MainActivity3.this)
+                new AlertDialog.Builder(MainActivity2.this)
                         .setTitle("사진 보기")
                         .setIcon(R.drawable.photo)
                         .setView(showdialog)
