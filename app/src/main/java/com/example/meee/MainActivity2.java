@@ -66,7 +66,7 @@ public class MainActivity2 extends AppCompatActivity {
         iv4 = findViewById(R.id.imageView4);
         iv5 = findViewById(R.id.imageView5);
 
-        // 앨범
+        // 앨범 아이콘 선택 시 대화창
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,15 +120,6 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
-    public void initJob(){
-        paint = new Paint();
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(15F);
-
-        path = new Path();
-    }
-
     // 카메라 열기
     public void onCamera(View v){
         switch (v.getId()){
@@ -147,12 +138,7 @@ public class MainActivity2 extends AppCompatActivity {
         startActivityForResult(intent, REQ_CODE_SELECT_IMAGE);
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        initJob();
-    }
-
-    // 앨범에서 선택 후 호출
+    // 앨범에서 선택 후 호출, 그림
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -204,16 +190,31 @@ public class MainActivity2 extends AppCompatActivity {
         }
     }
 
-    // 색상 변경 : 파랑, 굵기 변경 : 가늘게
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        initJob();
+    }
+
+    // 그림 그리기 기본 상태
+    public void initJob(){
+        paint = new Paint();
+        paint.setColor(Color.RED);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(15F);
+
+        path = new Path();
+    }
+
+    // 색상 변경 : 파랑, 굵기 변경 : 가늘게, 원래대로
     public void onChangePaint(View v) {
         switch (v.getId()) {
-            case R.id.button11:
+            case R.id.button11: // 파랑
                 color = Color.BLUE;
                 break;
-            case R.id.button12:
+            case R.id.button12: // 가늘게
                 width -= 5F;
                 break;
-            case R.id.button13:
+            case R.id.button13: // 원래대로
                 color = Color.RED;
                 width = 15F;
                 break;
