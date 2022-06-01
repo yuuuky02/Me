@@ -11,12 +11,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F1EFEF"
+            android:gravity="center_horizontal"
+            android:text="카메라 사진"
+            android:textSize="16sp" />
+
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
-            android:layout_height="418dp"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/outline_border" />
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/camera" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#F1EFEF"
+            android:gravity="center_horizontal"
+            android:text="앨범 사진"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/photo" />
 
     </LinearLayout>
 

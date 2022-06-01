@@ -1,8 +1,5 @@
 package com.example.meee;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,17 +18,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.IOException;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    private static final int REQ_CODE_SELECT_IMAGE = 100;
+    private static final int REQ_CODE_SELECT_CAMERA = 100;
+    private static final int REQ_CODE_SELECT_IMAGE = 200;
 
-    Bitmap bitmap;
+    Bitmap bitmap, imageBitmap;
     Button btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12;
     EditText et1;
     TextView tv25;
-    ImageView iv2, iv3, iv4;
+    ImageView iv2, iv3, iv4, iv5;
 
     View albumdialog, showdialog;
     Canvas canvas;
@@ -63,6 +64,7 @@ public class MainActivity2 extends AppCompatActivity {
         iv2 = findViewById(R.id.imageView2);
         iv3 = findViewById(R.id.imageView3);
         iv4 = findViewById(R.id.imageView4);
+        iv5 = findViewById(R.id.imageView5);
 
         // 앨범
         btn5.setOnClickListener(new View.OnClickListener() {
@@ -86,9 +88,10 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        // 지도 보기
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
             }
         });
@@ -99,7 +102,9 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View view) {
                 showdialog = View.inflate(MainActivity2.this, R.layout.showdialog, null);
                 iv4 = showdialog.findViewById(R.id.imageView4);
-                iv4.setImageBitmap(bitmap);
+                iv5 = showdialog.findViewById(R.id.imageView5);
+                iv4.setImageBitmap(imageBitmap);
+                iv5.setImageBitmap(bitmap);
                 new AlertDialog.Builder(MainActivity2.this)
                         .setTitle("사진 보기")
                         .setIcon(R.drawable.photo)
@@ -124,6 +129,16 @@ public class MainActivity2 extends AppCompatActivity {
         path = new Path();
     }
 
+    // 카메라 열기
+    public void onCamera(View v){
+        switch (v.getId()){
+            case R.id.button4:
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, REQ_CODE_SELECT_CAMERA);
+                break;
+        }
+    }
+
     // 앨범 열기
     public void onOpenAlbum(View v) {
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -142,7 +157,12 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK){
-            if(requestCode == REQ_CODE_SELECT_IMAGE){
+            if(requestCode == REQ_CODE_SELECT_CAMERA){
+                Bundle extras = data.getExtras();
+                imageBitmap = (Bitmap) extras.get("data");
+                iv2.setImageBitmap(imageBitmap);
+            }
+            else if (requestCode == REQ_CODE_SELECT_IMAGE){
                 try{
                     Bitmap bitmap1 = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
                     Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap1, iv3.getWidth(), iv3.getHeight(), false);
