@@ -99,7 +99,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/photo" />
+                app:srcCompat="@drawable/outline_border" />
 
             <TextView
                 android:id="@+id/textView25"
