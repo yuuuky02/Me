@@ -117,33 +117,42 @@
         <LinearLayout
             android:id="@+id/ll3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             android:layout_marginTop="50dp"
-            android:gravity="center_horizontal"
+            android:gravity="center_horizontal|center_vertical"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/very_good"
-                android:backgroundTint="#000000" />
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/neutral"
-                android:backgroundTint="#000000" />
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:button="@drawable/very_good" />
 
-            <Button
-                android:id="@+id/button9"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/very_bad"
-                android:backgroundTint="#000000" />
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginRight="80dp"
+                    android:button="@drawable/neutral" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:button="@drawable/very_bad" />
+
+            </RadioGroup>
         </LinearLayout>
 
     </LinearLayout>

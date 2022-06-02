@@ -64,6 +64,8 @@
             </intent-filter>
         </activity>
 
+        <!-- 본인 API 키 -->
+        <!-- 유경 : AIzaSyCiRaqOR1Kzbd9NuwXn_1eJu2c8eubt2I8 -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCiRaqOR1Kzbd9NuwXn_1eJu2c8eubt2I8" />
