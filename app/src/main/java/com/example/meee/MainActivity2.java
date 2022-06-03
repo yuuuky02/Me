@@ -1,7 +1,5 @@
 package com.example.meee;
 
-import static com.example.meee.R.drawable.neutral;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,22 +25,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
-
     private static final int REQ_CODE_SELECT_CAMERA = 100;
     private static final int REQ_CODE_SELECT_IMAGE = 200;
 
     Bitmap bitmap, imageBitmap;
-    Button btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10;
+    Button btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12;
     RadioGroup rg;
     RadioButton rb, rb2, rb3;
     EditText et1;
     TextView tv25;
-    ImageView iv2, iv3, iv4, iv5;
+    ImageView iv2, iv3, iv4;
 
-    View albumdialog, showdialog;
+    View albumdialog;
     Canvas canvas;
     Paint paint;
     Path path;
@@ -65,6 +62,8 @@ public class MainActivity2 extends AppCompatActivity {
         btn8 = findViewById(R.id.button8);
         btn9 = findViewById(R.id.button9);
         btn10 = findViewById(R.id.button10);
+        btn11 = findViewById(R.id.button11);
+        btn12 = findViewById(R.id.button12);
         rg = findViewById(R.id.radioGroup);
         rb = findViewById(R.id.radioButton);
         rb2 = findViewById(R.id.radioButton2);
@@ -74,7 +73,6 @@ public class MainActivity2 extends AppCompatActivity {
         iv2 = findViewById(R.id.imageView2);
         iv3 = findViewById(R.id.imageView3);
         iv4 = findViewById(R.id.imageView4);
-        iv5 = findViewById(R.id.imageView5);
 
         // close
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +95,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 albumdialog = View.inflate(MainActivity2.this, R.layout.albumdialog, null);
-                iv3 = albumdialog.findViewById(R.id.imageView3);
+                iv4 = albumdialog.findViewById(R.id.imageView4);
                 btn7 = albumdialog.findViewById(R.id.button7);
                 new AlertDialog.Builder(MainActivity2.this)
                         .setTitle("사진 선택")
@@ -106,10 +104,17 @@ public class MainActivity2 extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getApplicationContext(),"사진을 선택했습니다.", Toast.LENGTH_SHORT).show();
+                                iv2.setImageBitmap(imageBitmap); // 카메라 사진
+                                iv3.setImageBitmap(bitmap); // 앨범 사진
+                                Toast.makeText(getApplicationContext(), "사진을 선택했습니다.", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .setNegativeButton("취소", null)
+                        .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(), "사진 선택을 취소했습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        })
                         .show();
             }
         });
@@ -120,29 +125,6 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
                 startActivity(intent);
-            }
-        });
-
-        // 사진 보기
-        iv2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showdialog = View.inflate(MainActivity2.this, R.layout.showdialog, null);
-                iv4 = showdialog.findViewById(R.id.imageView4);
-                iv5 = showdialog.findViewById(R.id.imageView5);
-                iv4.setImageBitmap(imageBitmap);
-                iv5.setImageBitmap(bitmap);
-                new AlertDialog.Builder(MainActivity2.this)
-                        .setTitle("사진 보기")
-                        .setIcon(R.drawable.photo)
-                        .setView(showdialog)
-                        .setPositiveButton("닫기", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getApplicationContext(), "사진 보기를 했습니다", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .show();
             }
         });
 
@@ -180,6 +162,7 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivityForResult(intent, REQ_CODE_SELECT_CAMERA);
                 break;
         }
+        return;
     }
 
     // 앨범 열기
@@ -203,18 +186,18 @@ public class MainActivity2 extends AppCompatActivity {
             else if (requestCode == REQ_CODE_SELECT_IMAGE){ // 앨범 선택
                 try{
                     Bitmap bitmap1 = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
-                    Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap1, iv3.getWidth(), iv3.getHeight(), false);
+                    Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap1, iv4.getWidth(), iv4.getHeight(), false);
 
                     bitmap = bitmap2.copy(Bitmap.Config.ARGB_8888,true);
 
                     canvas = new Canvas(bitmap);
-                    iv3.setImageBitmap(bitmap);
-                    iv2.setImageBitmap(bitmap);
-                    iv3.setOnTouchListener(new View.OnTouchListener() { // iv3 에 그림그리기
+                    iv4.setImageBitmap(bitmap);
+
+                    iv4.setOnTouchListener(new View.OnTouchListener() { // albumdialog의 iv4 에 그림그리기
                         @Override
                         public boolean onTouch(View view, MotionEvent motionEvent) {
-                            float x = motionEvent.getX();
-                            float y = motionEvent.getY();
+                            float x = (float) motionEvent.getX();
+                            float y = (float) motionEvent.getY();
                             int action = motionEvent.getAction();
                             switch (action){
                                 case MotionEvent.ACTION_DOWN:
@@ -227,7 +210,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                                     path.lineTo(x, y);
                                     canvas.drawPath(path, paint);
-                                    iv3.invalidate();
+                                    iv4.invalidate();
                                     break;
                             }
                             return true;
@@ -253,7 +236,7 @@ public class MainActivity2 extends AppCompatActivity {
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(15F);
-
+        paint.setAntiAlias(true);
         path = new Path();
     }
 
@@ -270,7 +253,13 @@ public class MainActivity2 extends AppCompatActivity {
                 color = Color.RED;
                 width = 15F;
                 break;
+            case R.id.button11: // 획 지우기
+                Toast.makeText(getApplicationContext(), "지우기", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button12: // 초기화
+                break;
         }
+        iv4.invalidate();
         paint.setColor(color);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(width);
