@@ -37,7 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
     RadioButton rb, rb2, rb3;
     EditText et1;
     TextView tv25;
-    ImageView iv2, iv3, iv4;
+    ImageView iv2, iv3, iv4, iv5;
 
     View albumdialog;
     Canvas canvas;
@@ -73,6 +73,7 @@ public class MainActivity2 extends AppCompatActivity {
         iv2 = findViewById(R.id.imageView2);
         iv3 = findViewById(R.id.imageView3);
         iv4 = findViewById(R.id.imageView4);
+        iv5 = findViewById(R.id.imageView5);
 
         // close
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +113,7 @@ public class MainActivity2 extends AppCompatActivity {
                         .setNegativeButton("취소", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(), "사진 선택을 취소했습니다.", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext(), "사진 선택을 취소했습니다.", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .show();
@@ -123,8 +124,6 @@ public class MainActivity2 extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
-                startActivity(intent);
             }
         });
 
@@ -182,6 +181,7 @@ public class MainActivity2 extends AppCompatActivity {
                 Bundle extras = data.getExtras();
                 imageBitmap = (Bitmap) extras.get("data");
                 iv2.setImageBitmap(imageBitmap);
+
             }
             else if (requestCode == REQ_CODE_SELECT_IMAGE){ // 앨범 선택
                 try{
