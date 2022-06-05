@@ -22,6 +22,8 @@ public class MainActivity3 extends AppCompatActivity {
         btn13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
     }

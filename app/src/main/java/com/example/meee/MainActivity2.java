@@ -30,6 +30,7 @@ import java.util.ArrayList;
 public class MainActivity2 extends AppCompatActivity {
     private static final int REQ_CODE_SELECT_CAMERA = 100;
     private static final int REQ_CODE_SELECT_IMAGE = 200;
+    private static final int REQ_CODE_MEMO = 300;
 
     Bitmap bitmap, imageBitmap;
     Button btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12;
@@ -124,6 +125,8 @@ public class MainActivity2 extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                startActivityForResult(intent, REQ_CODE_MEMO);
             }
         });
 
@@ -219,7 +222,7 @@ public class MainActivity2 extends AppCompatActivity {
                 }catch(IOException e){
                     e.printStackTrace();
                 }
-            }
+            } else if (requestCode == REQ_CODE_MEMO){}
         }else {
             return;
         }
