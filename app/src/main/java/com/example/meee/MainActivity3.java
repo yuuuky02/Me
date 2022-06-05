@@ -11,15 +11,15 @@ import android.widget.ImageView;
 
 public class MainActivity3 extends AppCompatActivity {
 
-    Button btn13;
+    Button btn11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        btn13 = findViewById(R.id.button13);
+        btn11 = findViewById(R.id.button11);
 
         // 뒤로가기
-        btn13.setOnClickListener(new View.OnClickListener() {
+        btn11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setResult(RESULT_CANCELED);

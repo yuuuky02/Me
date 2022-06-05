@@ -67,27 +67,6 @@
             android:text="원래대로"
             android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
-            android:layout_weight="1"
-            android:background="#ECECEC"
-            android:onClick="onChangePaint"
-            android:text="획 지우기"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/button12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#ECECEC"
-            android:onClick="onChangePaint"
-            android:text="초기화"
-            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

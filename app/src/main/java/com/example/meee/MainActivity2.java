@@ -1,6 +1,7 @@
 package com.example.meee;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -33,7 +34,7 @@ public class MainActivity2 extends AppCompatActivity {
     private static final int REQ_CODE_MEMO = 300;
 
     Bitmap bitmap, imageBitmap;
-    Button btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12;
+    Button btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10;
     RadioGroup rg;
     RadioButton rb, rb2, rb3;
     EditText et1;
@@ -63,8 +64,6 @@ public class MainActivity2 extends AppCompatActivity {
         btn8 = findViewById(R.id.button8);
         btn9 = findViewById(R.id.button9);
         btn10 = findViewById(R.id.button10);
-        btn11 = findViewById(R.id.button11);
-        btn12 = findViewById(R.id.button12);
         rg = findViewById(R.id.radioGroup);
         rb = findViewById(R.id.radioButton);
         rb2 = findViewById(R.id.radioButton2);
@@ -80,7 +79,6 @@ public class MainActivity2 extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
@@ -88,7 +86,6 @@ public class MainActivity2 extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
@@ -114,7 +111,7 @@ public class MainActivity2 extends AppCompatActivity {
                         .setNegativeButton("취소", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-//                                Toast.makeText(getApplicationContext(), "사진 선택을 취소했습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "사진 선택을 취소했습니다.", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .show();
@@ -184,7 +181,6 @@ public class MainActivity2 extends AppCompatActivity {
                 Bundle extras = data.getExtras();
                 imageBitmap = (Bitmap) extras.get("data");
                 iv2.setImageBitmap(imageBitmap);
-
             }
             else if (requestCode == REQ_CODE_SELECT_IMAGE){ // 앨범 선택
                 try{
@@ -215,7 +211,12 @@ public class MainActivity2 extends AppCompatActivity {
                                     canvas.drawPath(path, paint);
                                     iv4.invalidate();
                                     break;
+                                case MotionEvent.ACTION_UP:
+                                    break;
+                                default:
+                                    return false;
                             }
+                            iv4.invalidate();
                             return true;
                         }
                     });
@@ -255,11 +256,6 @@ public class MainActivity2 extends AppCompatActivity {
             case R.id.button10: // 원래대로
                 color = Color.RED;
                 width = 15F;
-                break;
-            case R.id.button11: // 획 지우기
-                Toast.makeText(getApplicationContext(), "지우기", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.button12: // 초기화
                 break;
         }
         iv4.invalidate();
