@@ -1,7 +1,7 @@
 package com.example.meee;
 
+import android.Manifest;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -24,11 +24,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class MainActivity2 extends AppCompatActivity {
+public class Memo_daily extends AppCompatActivity {
     private static final int REQ_CODE_SELECT_CAMERA = 100;
     private static final int REQ_CODE_SELECT_IMAGE = 200;
     private static final int REQ_CODE_MEMO = 300;
@@ -54,7 +54,9 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_memo_daily);
+        ActivityCompat.requestPermissions(this, new String[]
+                {android.Manifest.permission.CAMERA}, MODE_PRIVATE);
         btn2 = findViewById(R.id.button2);
         btn3 = findViewById(R.id.button3);
         btn4 = findViewById(R.id.button4);
@@ -93,10 +95,10 @@ public class MainActivity2 extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                albumdialog = View.inflate(MainActivity2.this, R.layout.albumdialog, null);
+                albumdialog = View.inflate(Memo_daily.this, R.layout.albumdialog, null);
                 iv4 = albumdialog.findViewById(R.id.imageView4);
                 btn7 = albumdialog.findViewById(R.id.button7);
-                new AlertDialog.Builder(MainActivity2.this)
+                new AlertDialog.Builder(Memo_daily.this)
                         .setTitle("사진 선택")
                         .setIcon(R.drawable.photo)
                         .setView(albumdialog)
@@ -122,7 +124,7 @@ public class MainActivity2 extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                Intent intent = new Intent(getApplicationContext(), Map.class);
                 startActivityForResult(intent, REQ_CODE_MEMO);
             }
         });
