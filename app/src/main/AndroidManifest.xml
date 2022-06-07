@@ -7,7 +7,7 @@
         android:required="true" />
 
     <permission
-        android:name="com.example.mobliemap.permission.MAPS_RECEIVE"
+        android:name="com.example.meee.permission.MAPS_RECEIVE"
         android:label="signature" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -37,7 +37,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Me">
         <activity
-            android:name=".MainActivity"
+            android:name=".Stats"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity2"
+            android:name=".Memo_daily"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,7 +55,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity3"
+            android:name=".Map"
             android:exported="false" />
 
         <!-- 본인 API 키 -->
