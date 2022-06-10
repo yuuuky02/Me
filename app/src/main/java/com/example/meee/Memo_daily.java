@@ -149,15 +149,15 @@ public class Memo_daily extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), com.example.meee.Map.class);
                 startActivityForResult(intent, REQ_CODE_MEMO);
 
-                gpsTracker = new GpsTracker(Memo_daily.this);
-
-                double latitude = gpsTracker.getLatitude();
-                double longitude = gpsTracker.getLongitude();
-
-                String address = getCurrentAddress(latitude, longitude);
-                maptv.setText(address);
-
-                Toast.makeText(Memo_daily.this, "현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
+//                gpsTracker = new GpsTracker(Memo_daily.this);
+//
+//                double latitude = gpsTracker.getLatitude();
+//                double longitude = gpsTracker.getLongitude();
+//
+//                String address = getCurrentAddress(latitude, longitude);
+//                maptv.setText(address);
+//
+//                Toast.makeText(Memo_daily.this, "현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
             }
         });
 
