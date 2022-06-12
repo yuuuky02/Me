@@ -48,7 +48,7 @@ public class Memo_daily extends AppCompatActivity {
     RadioButton rb, rb2, rb3;
     EditText et1;
     TextView tv25, maptv;
-    ImageView iv2, iv3, iv4, iv5;
+    ImageView iv2, iv3, iv4;
 
     View albumdialog;
     Canvas canvas;
@@ -86,7 +86,6 @@ public class Memo_daily extends AppCompatActivity {
         iv2 = findViewById(R.id.imageView2);
         iv3 = findViewById(R.id.imageView3);
         iv4 = findViewById(R.id.imageView4);
-        iv5 = findViewById(R.id.imageView5);
         maptv = findViewById(R.id.textView13_d);
 
         // close
