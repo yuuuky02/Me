@@ -3,27 +3,18 @@ package com.example.meee;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.PatternMatcher;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,18 +35,28 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap googleMap;
 
-    Button btn11;
+    Button mapbtn1, mapbtn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        btn11 = findViewById(R.id.button11);
+        mapbtn1 = findViewById(R.id.mapbtn1);
+        mapbtn2 = findViewById(R.id.mapbtn2);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         // 뒤로가기
-        btn11.setOnClickListener(new View.OnClickListener() {
+        mapbtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        });
+
+        // 나의 위치
+        mapbtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gpsTracker = new GpsTracker(Map.this);
@@ -85,7 +86,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         googleMap.addMarker(markerOptions);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                                        == PackageManager.PERMISSION_GRANTED){
+                == PackageManager.PERMISSION_GRANTED){
             googleMap.setMyLocationEnabled(true);
         }
     }
@@ -155,7 +156,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                 case GPS_ENABLE_REQUEST_CODE:
                     if (checkLocationServicesStatus()) {
                         if (checkLocationServicesStatus()) {
-
                             Log.d("@@@", "onActivityResult : GPS 활성화 되있음");
                             return;
                         }

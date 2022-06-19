@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/stats"
+        android:title="통계" />
+    <item android:id="@+id/tripdata"
+        android:title="여행 데이터" />
+    <item android:id="@+id/mapdata"
+        android:title="지도 데이터" />
+
+</menu>

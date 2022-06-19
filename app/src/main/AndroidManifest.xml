@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -30,13 +31,14 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Me"
+        android:label="TermProject"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Me">
+        android:theme="@style/Theme.TermProject"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".Trip_Tour"
+            android:name="com.example.meee.Main_home"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Stats"
+            android:name="com.example.meee.Stats"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +56,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Memo_daily"
+            android:name="com.example.meee.MemoDaily"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,7 +65,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Map"
+            android:name="com.example.meee.MemoExercise"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.meee.MemoStudy"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.meee.MemoTrip"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.meee.Map"
             android:exported="false" /> <!-- 본인 API 키 -->
         <!-- 유경 : AIzaSyCiRaqOR1Kzbd9NuwXn_1eJu2c8eubt2I8 -->
         <meta-data

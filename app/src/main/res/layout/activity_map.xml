@@ -19,16 +19,30 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/mapbtn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:text="뒤로가기"
+        android:fontFamily="@font/leeseoyun"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/mapbtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="#FFFFFF"
+        android:text="나의 위치"
+        android:fontFamily="@font/leeseoyun"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/mapbtn1"
+        app:layout_constraintTop_toTopOf="@+id/mapbtn1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
